@@ -1,44 +1,44 @@
 # Eval Dataset Analyzer
 
-Утилита для анализа результатов LLM evaluation прогонов.
+Utility for analyzing LLM evaluation run results.
 
-## Установка
+## Installation
 ```bash
 pip install -r requirements.txt
 ```
 
-## Использование
+## Usage
 ```python
 from eval_analyzer import EvalAnalyzer
 
 analyzer = EvalAnalyzer()
 analyzer.load_data('sample_eval.csv')
 
-# Фильтр по score
+# Filter by score
 high_performers = analyzer.filter_by_score(0.8)
 
-# Сравнение моделей
+# Compare models
 comparison = analyzer.model_comparison()
 print(comparison)
 
-# Экспорт провалов
+# Export failed tests
 analyzer.export_failed_tests('failed_tests.csv', threshold=0.7)
 ```
 
-## Формат данных
+## Data Format
 
-Обязательные колонки:
-- `prompt_id` — уникальный ID теста
-- `model` — название модели
-- `score` — оценка (0.0 - 1.0)
+Required columns:
+- `prompt_id` — unique test ID
+- `model` — model name
+- `score` — evaluation score (0.0 - 1.0)
 
-Опциональные:
-- `latency_ms` — время ответа в миллисекундах
-- `prompt_text`, `response` — текстовые данные
+Optional:
+- `latency_ms` — response time in milliseconds
+- `prompt_text`, `response` — text data
 
-## Методы
+## Methods
 
-- `load_data(filepath)` — загрузка CSV/JSON
-- `filter_by_score(min_score)` — фильтрация по порогу
-- `model_comparison()` — статистика по моделям
-- `export_failed_tests(output_path, threshold)` — экспорт провалов
+- `load_data(filepath)` — load CSV/JSON
+- `filter_by_score(min_score)` — filter by score threshold
+- `model_comparison()` — statistics by model
+- `export_failed_tests(output_path, threshold)` — export failed tests
