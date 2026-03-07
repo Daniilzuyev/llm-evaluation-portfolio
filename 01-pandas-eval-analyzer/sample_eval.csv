@@ -1,0 +1,8 @@
+prompt_id,prompt_text,model,response,score,latency_ms
+1,"Summarize article",gpt-4,"Summary text...",0.92,1200
+2,"Translate to French",claude-3,"La traduction...",0.88,800
+3,"Fix Python code",gpt-3.5,"Fixed code...",0.45,600
+4,"Explain concept",gpt-4,"Explanation...",0.95,1500
+5,"Generate SQL",claude-3,"SELECT * FROM...",0.78,700
+6,Stack trace issue,gemini-1.5,fixed bugs...,0.87,3000
+7,Localization fix,gpt-3.5,Localization...,0.89,700
