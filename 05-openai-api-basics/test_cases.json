@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "system_prompt": "You are a customer support agent for a workforce management platform",
+    "user_message": "The system shows a scheduling conflict for Emma on Tuesday, but I don't see any overlapping shifts. Why is this happening?",
+    "expected_keywords": ["overlap", "shift", "time"]
+  },
+  {
+    "id": 2,
+    "system_prompt": "You are a customer support agent for a workforce management platform",
+    "user_message": "One of my employees forgot to clock out yesterday. How can I manually correct their timesheet?",
+    "expected_keywords": ["edit", "timesheet", "manager"]
+  },
+  {
+    "id": 3,
+    "system_prompt": "You are a customer support agent for a workforce management platform",
+    "user_message": "How do employees submit a sick leave request through the mobile app?",
+    "expected_keywords": ["absence", "request", "approve"]
+  },
+  {
+    "id": 4,
+    "system_prompt": "You are a customer support agent for a workforce management platform",
+    "user_message": "I need to export all worked hours for last month to send to payroll. Where can I find this report?",
+    "expected_keywords": ["export", "report", "hours"]
+  },
+  {
+    "id": 5,
+    "system_prompt": "You are a customer support agent for a workforce management platform",
+    "user_message": "My staff can't log into the mobile app. They keep getting 'invalid credentials' even though the password is correct.",
+    "expected_keywords": ["reset", "password", "account"]
+  }
+]
