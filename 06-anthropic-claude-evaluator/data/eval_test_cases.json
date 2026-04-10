@@ -1,0 +1,14 @@
+[
+  {
+    "prompt": "What is test automation?",
+    "response": "Test automation is writing scripts to run tests automatically."
+  },
+  {
+    "prompt": "What is CI/CD?",
+    "response": "CI/CD automates deployment and testing in software development."
+  },
+  {
+    "prompt": "What is an API?",
+    "response": "API stands for Application Programming Interface."
+  }
+]

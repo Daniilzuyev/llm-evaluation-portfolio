@@ -56,7 +56,6 @@ class StatisticalEvaluator:
         plt.ylabel("Score", fontsize=12)
         plt.grid(axis="y", alpha=0.3)
 
-        # Посчитать средние и CI
         mean_a = np.mean(scores_a)
         mean_b = np.mean(scores_b)
         ci_a = self.confidence_interval(scores_a)
