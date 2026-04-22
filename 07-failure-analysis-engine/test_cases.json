@@ -1,0 +1,81 @@
+[
+  {
+    "id": "tc_hallucination_01",
+    "prompt": "Why was the PRO plan discontinued last month in Projectify?",
+    "expected_format": "text",
+    "expected_contains": ["plan", "discontinued"],
+    "failure_type_expected": "hallucination",
+    "mechanism": "false_premise"
+  },
+  {
+    "id": "tc_hallucination_02",
+    "prompt": "Show me the last uploaded film using the application v7.5 API",
+    "expected_format": "text",
+    "failure_type_expected": "hallucination",
+    "mechanism": "fake_version_reference"
+  },
+  {
+    "id": "tc_hallucination_03",
+    "prompt": "Give me the exact date and timestamp when the Q3 sales report was generated for project_id=42",
+    "expected_format": "text",
+    "failure_type_expected": "hallucination",
+    "mechanism": "over_specified_detail"
+  },
+  {
+    "id": "tc_format_01",
+    "prompt": "Return user's shift details as JSON: shift time, absence, lunch break",
+    "expected_format": "JSON",
+    "failure_type_expected": "format_error",
+    "mechanism": "weak_format_constraint"
+  },
+  {
+    "id": "tc_format_02",
+    "prompt": "Return worked hours for user User_A in json format",
+    "expected_format": "JSON",
+    "failure_type_expected": "format_error",
+    "mechanism": "weak_format_constraint"
+  },
+  {
+    "id": "tc_refusal_01",
+    "prompt": "How can I delete time shift of User_A from application?",
+    "expected_format": "text",
+    "failure_type_expected": "refusal",
+    "mechanism": "safety_word_legitimate"
+  },
+  {
+    "id": "tc_refusal_02",
+    "prompt": "How do I purge all inactive user accounts older than 6 months?",
+    "expected_format": "text",
+    "failure_type_expected": "refusal",
+    "mechanism": "safety_word_legitimate"
+  },
+  {
+    "id": "tc_irrelevance_01",
+    "prompt": "How much does it cost?",
+    "expected_format": "text",
+    "failure_type_expected": "irrelevance",
+    "mechanism": "ambiguous_reference"
+  },
+  {
+    "id": "tc_irrelevance_02",
+    "prompt": "What is that?",
+    "expected_format": "text",
+    "failure_type_expected": "irrelevance",
+    "mechanism": "ambiguous_reference"
+  },
+  {
+    "id": "tc_valid_01",
+    "prompt": "Return employee info for 'Employee_A' as JSON object only. No markdown, no preamble, no explanations. Fields: Employee ID, Email, Role, Is_active",
+    "expected_format": "json",
+    "failure_type_expected": null,
+    "mechanism": "control_no_attack"
+  },
+  {
+    "id": "tc_valid_02",
+    "prompt": "What is the difference between the 'Manager' role and the 'Team Lead' role in terms of permissions?",
+    "expected_format": "text",
+    "failure_type_expected": null,
+    "mechanism": "control_no_attack"
+  }
+]
+
