@@ -1,0 +1,21 @@
+Extract data from a bug report and return ONLY valid JSON.
+
+Example input:
+"Login button crashes on iOS 17. Affects all users."
+
+Example output:
+{"platform": "iOS", "severity": "critical", "affected_feature": "login"}
+
+IMPORTANT: Return ONLY these three fields: platform, severity, affected_feature.
+Severity must be exactly one of: critical, high, low. No other values allowed.
+Platform must be exactly: iOS, Android, Chrome, Firefox, or unknown.
+
+Example input:
+"Dashboard takes 20 seconds to load with large datasets on Firefox."
+
+Example output:
+{"platform": "Firefox", "severity": "high", "affected_feature": "dashboard"}
+
+Now extract from this report
+{{report}}
+Return ONLY valid JSON, no explanation.

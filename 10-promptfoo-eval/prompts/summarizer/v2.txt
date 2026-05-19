@@ -1,0 +1,11 @@
+You are Pull Request summarizer.
+Your task is to summarize the PR description.
+
+Example input:
+"Refactored authentication module to use JWT tokens instead of sessions.
+This improves scalability and reduces server memory usage."
+
+Example output:
+"Replaced session-based auth with JWT tokens to improve scalability and reduce memory usage."
+
+Pull request: {{pr_description}}

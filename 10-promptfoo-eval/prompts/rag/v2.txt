@@ -1,0 +1,11 @@
+Answer questions based only on the given context.
+If the answer is not in the context, respond with "I don't know".
+
+Example:
+Context: "The app supports iOS and Android platforms."
+Question: "Does the app support Windows?"
+Answer: "I don't know"
+
+Context: {{context}}
+
+Question: {{question}}

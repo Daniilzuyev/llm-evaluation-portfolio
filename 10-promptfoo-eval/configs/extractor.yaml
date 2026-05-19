@@ -1,0 +1,48 @@
+providers:
+  - openai:gpt-4o-mini
+
+prompts:
+  - file://../prompts/extractor/v1.txt
+  - file://../prompts/extractor/v2.txt
+
+tests:
+  - vars:
+      report: "App crashes on iOS 17 immediately after login for all users"
+    assert:
+      - type: is-json
+      - type: javascript
+        value: "JSON.parse(output).platform === 'iOS'"
+      - type: javascript
+        value: "JSON.parse(output).severity === 'critical'"
+
+  - vars:
+      report: "Export to PDF button is broken in Chrome. Users cannot download reports."
+    assert:
+      - type: is-json
+      - type: javascript
+        value: "JSON.parse(output).platform === 'Chrome'"
+      - type: javascript
+        value: "JSON.parse(output).affected_feature.toLowerCase().includes('export')"
+
+  - vars:
+      report: "Dashboard loads slowly on Firefox, takes 20 seconds with large datasets"
+    assert:
+      - type: is-json
+      - type: javascript
+        value: "JSON.parse(output).platform === 'Firefox'"
+      - type: javascript
+        value: "JSON.parse(output).severity === 'high'"
+
+  - vars:
+      report: "Typo on the settings page: 'Prefferences' instead of 'Preferences'"
+    assert:
+      - type: is-json
+      - type: javascript
+        value: "JSON.parse(output).severity === 'low'"
+
+  - vars:
+      report: "User data is deleted when session expires unexpectedly"
+    assert:
+      - type: is-json
+      - type: javascript
+        value: "JSON.parse(output).severity === 'critical'"

@@ -1,0 +1,10 @@
+Classify bug severity as: critical, high, or low.
+
+Examples:
+- "App crashes on login for all users" → critical
+- "Export button doesn't work on Firefox" → high
+- "Button color is slightly off" → low
+
+Respond with only one word: critical, high, or low.
+
+Bug report: {{report}}

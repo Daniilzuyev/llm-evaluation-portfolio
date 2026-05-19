@@ -1,0 +1,43 @@
+providers:
+  - openai:gpt-4o-mini
+
+prompts:
+  - file://../prompts/classifier/v1.txt
+  - file://../prompts/classifier/v2.txt
+
+tests:
+  - vars:
+      report: "Application crashes immediately on startup for all users after latest deployment"
+    assert:
+      - type: contains
+        value: "critical"
+
+  - vars:
+      report: "Database becomes corrupted when two users edit the same record simultaneously"
+    assert:
+      - type: contains
+        value: "critical"
+
+  - vars:
+      report: "Password reset email is not being delivered to Gmail addresses"
+    assert:
+      - type: contains
+        value: "high"
+
+  - vars:
+      report: "Dashboard takes 15 seconds to load when user has more than 100 records"
+    assert:
+      - type: contains
+        value: "high"
+
+  - vars:
+      report: "Submit button text is misaligned by 2 pixels on mobile Safari"
+    assert:
+      - type: contains
+        value: "low"
+
+  - vars:
+      report: "Tooltip text has a typo: 'Cancell' instead of 'Cancel'"
+    assert:
+      - type: contains
+        value: "low"

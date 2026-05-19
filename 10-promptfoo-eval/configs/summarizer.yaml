@@ -1,0 +1,31 @@
+providers:
+  - openai:gpt-4o-mini
+
+prompts:
+  - file://../prompts/summarizer/v1.txt
+  - file://../prompts/summarizer/v2.txt
+
+tests:
+  - vars:
+      pr_description: "Fixed null pointer exception in user profile loading."
+    assert:
+      - type: llm-rubric
+        value: "Summary mentions null pointer fix or profile loading"
+
+  - vars:
+      pr_description: "Implemented feature for change credentials functionality"
+    assert:
+      - type: llm-rubric
+        value: "Summary mentions credentials change or authentication functionality"
+
+  - vars:
+      pr_description: "UI changes in login page"
+    assert:
+      - type: llm-rubric
+        value: "Summary mentions UI changes or login page"
+
+  - vars:
+      pr_description: "Role permission changes"
+    assert:
+      - type: llm-rubric
+        value: "Summary mentions role permissions or access changes"

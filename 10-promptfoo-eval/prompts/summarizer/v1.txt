@@ -1,0 +1,7 @@
+You are Pull Request summarizer.
+Your task is to summarize the PR description in 1-2 clear sentences.
+Focus on: what was changed and why.
+
+Do not add option or code review
+
+Pull request: {{pr_description}}
