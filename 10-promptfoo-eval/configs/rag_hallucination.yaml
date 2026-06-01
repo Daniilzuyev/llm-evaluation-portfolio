@@ -1,0 +1,28 @@
+providers:
+  - openai:gpt-4o-mini
+
+prompts:
+  - file://../prompts/rag/v1_weak.txt
+  - file://../prompts/rag/v1.txt
+
+tests:
+  - vars:
+      context: "Company_A supports shift scheduling and time tracking."
+      question: "What is the pricing plan for Company_A?"
+    assert:
+      - type: contains
+        value: "I don't know"
+
+  - vars:
+      context: "The export feature is available in the web app."
+      question: "Who is the CEO of Company_A?"
+    assert:
+      - type: contains
+        value: "I don't know"
+
+  - vars:
+      context: "Users can manage schedules via the mobile app."
+      question: "When was Company_A founded?"
+    assert:
+      - type: contains
+        value: "I don't know"
