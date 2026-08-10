@@ -11,6 +11,7 @@ venv/
 env/
 ENV/
 .venv
+portfolio-cleanup-backlog.md
 
 # IDE
 .vscode/
