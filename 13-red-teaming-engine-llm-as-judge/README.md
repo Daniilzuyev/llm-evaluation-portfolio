@@ -1,6 +1,6 @@
 # 13 — Red Teaming Engine with LLM-as-Judge
 
-MC-1 mini-challenge (independent build, no scaffolding). Extends 
+MC-1 mini-challenge (independent build). Extends 
 `09-red-teaming-engine`: keyword-based detector replaced with LLM-as-Judge.
 
 ## Why
