@@ -18,7 +18,7 @@ load_dotenv()
 
 # Model used as judge. Different from typical "generator" models
 # to avoid self-preference bias.
-JUDGE_MODEL = 'claude-sonnet-4-20250514'
+JUDGE_MODEL = 'claude-sonnet-4-6'
 
 # Temperature MUST be 0 for deterministic, reproducible judging.
 JUDGE_TEMPERATURE = 0
