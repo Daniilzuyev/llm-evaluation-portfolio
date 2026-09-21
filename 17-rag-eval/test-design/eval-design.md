@@ -1,5 +1,5 @@
-# Eval Design: HR Policy Assistant (RAG-based)
-**T21.5 — Independence Track deliverable**
+ # Eval Design: HR Policy Assistant (RAG-based)
+**Independence Track deliverable**
 **Author:** Daniil Zuiev
 **Status:** Complete — all 6 Definition of Done sections filled (Failure
 Modes, Metrics Mapping, Test Data Plan, Thresholds, Tooling Choice, Edge
