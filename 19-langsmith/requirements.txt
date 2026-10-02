@@ -1,0 +1,7 @@
+# Pin <1: langsmith's wrap_anthropic still calls client.completions.create, which anthropic 1.0 removed.
+# Remove the pin once wrap_anthropic no longer touches completions (re-check on each langsmith upgrade).
+anthropic<1
+langsmith==0.14.1
+pytest==9.1.1
+python-dotenv==1.2.3
+python-frontmatter==1.3.0
