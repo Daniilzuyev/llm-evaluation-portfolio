@@ -136,7 +136,7 @@ Judge cost is not included: judge calls are made with an unwrapped client and ar
 
 - **One run per experiment.** The bot and the judge are non-deterministic, so a one-case difference between runs is not evidence by itself. The improvement for #5 and #8 is supported by the traces, not by the score difference alone.
 - **The judge is not calibrated.** Bot (`claude-haiku-4-5`) and judge (`claude-sonnet-5`) are from the same vendor. I reviewed the failing verdicts (#4, #5, #8, #2) against the traces, and I agreed with them. I did not review the passing verdicts, so false passes are not ruled out.
-- **Averages shown in the LangSmith UI were not reconciled with per-row counts**, so this README reports counts out of 12.
+- **UI averages can lag.** The averages shown in the LangSmith UI can be stale while evaluator results are still arriving. Reload the page before reading them; this README reports counts out of 12.
 - **The retriever is a teaching tool.** Plural handling is a one-rule heuristic ("does" becomes "doe", consistently on both sides, so matching still works). Words with different forms ("fee" vs "fees" works, "pay" vs "payment" does not) will still miss. Tie-breaking between equal scores follows document load order. Embedding search would remove these bugs and add others (see the T22.5 project in this portfolio).
 - **12 cases is small.** Each failure mode has one to three cases.
 - **The judge is not unit-tested** because it requires a live API call. Only the code evaluator and the retriever are covered by tests.
