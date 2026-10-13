@@ -1,0 +1,21 @@
+name: eval-22-cicd
+
+on:
+  push:
+    paths:
+      - "22-cicd-eval/**"
+      - ".github/workflows/eval-22-cicd.yml"
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 22-cicd-eval
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
