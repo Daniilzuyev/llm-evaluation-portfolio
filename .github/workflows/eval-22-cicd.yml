@@ -1,6 +1,10 @@
 name: eval-22-cicd
 
 on:
+  pull_request:
+    paths:
+      - "22-cicd-eval/**"
+      - ".github/workflows/eval-22-cicd.yml"
   push:
     paths:
       - "22-cicd-eval/**"
@@ -19,3 +23,21 @@ jobs:
           python-version: "3.14"
       - run: pip install -r requirements.txt
       - run: python -m pytest -q
+
+  eval-gate:
+    if: github.event_name == 'pull_request'
+    needs: offline-tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 22-cicd-eval
+    steps:
+        - uses: actions/checkout@v6
+        - uses: actions/setup-python@v6
+          with:
+            python-version: "3.14"
+        - run: pip install -r requirements.txt
+        - run: braintrust eval eval_bank_qa.py --no-send-logs --jsonl --no-progress-bars > summary.jsonl
+          env:
+            ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        - run: python gate/check_scores.py summary.jsonl
