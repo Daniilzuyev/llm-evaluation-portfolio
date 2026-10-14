@@ -1,0 +1,41 @@
+trigger:
+  branches:
+    include: [main]
+  paths:
+    include: [22-cicd-eval]
+
+pr:
+  branches:
+    include: [main]
+  paths:
+    include: [22-cicd-eval]
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+  - job: offline_tests
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.14"
+      - script: pip install -r requirements.txt
+        workingDirectory: $(Build.SourcesDirectory)/22-cicd-eval
+      - script: python -m pytest -q
+        workingDirectory: $(Build.SourcesDirectory)/22-cicd-eval
+
+  - job: eval_gate
+    dependsOn: offline_tests
+    condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.14"
+      - script: pip install -r requirements.txt
+        workingDirectory: $(Build.SourcesDirectory)/22-cicd-eval
+      - script: braintrust eval eval_bank_qa.py --no-send-logs --jsonl --no-progress-bars > summary.jsonl
+        workingDirectory: $(Build.SourcesDirectory)/22-cicd-eval
+        env:
+          ANTHROPIC_API_KEY: $(ANTHROPIC_API_KEY)
+      - script: python gate/check_scores.py summary.jsonl
+        workingDirectory: $(Build.SourcesDirectory)/22-cicd-eval
