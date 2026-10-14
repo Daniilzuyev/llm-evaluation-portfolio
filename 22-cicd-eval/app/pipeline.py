@@ -8,7 +8,7 @@ from app.generator import build_context, generate_answer
 CHUNKS = load_chunks()
 
 def answer_pipeline(query: str) -> str:
-    found = retrieve(query, CHUNKS, k=0)
+    found = retrieve(query, CHUNKS)
     context = build_context(found)
     return generate_answer(query, context)
 
