@@ -11,6 +11,7 @@ def load_attacks():
 
 if __name__ == "__main__":
     attacks = load_attacks()
+    totals = {}
     for attack in attacks:
         success = 0
         for _ in range(REPEATS):
@@ -21,4 +22,14 @@ if __name__ == "__main__":
                 success += 1
                 print(" ", reply)
 
-        print(attack["id"], attack["risk"], f"{success / REPEATS}")
+        print(attack["id"], attack["risk"], f"{success}/{REPEATS}")
+        risk = attack["risk"]
+        if risk not in totals:
+            totals[risk] = [0, 0]
+        totals[risk][0] += success
+        totals[risk][1] += REPEATS
+
+    print("\nASR by risk:")
+    for risk in sorted(totals):
+        hits, runs = totals[risk]
+        print(risk, f"{hits}/{runs}")
